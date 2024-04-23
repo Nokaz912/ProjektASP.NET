@@ -1,0 +1,80 @@
+﻿@model ProjektASP.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Zarejestruj";
+}
+
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title.</h2>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Utwórz nowe konto.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="row">
+            <label for="Email">E-mail</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <label for="Name">Imię</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <label for="Surrname">Nazwisko</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Surrname, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <label for="Code">Kod pocztowy</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <label for="City">Miasto</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <label for="StreetAndBuildingNumber">Adres</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <label for="ApartmentNumber">Numer mieszkania</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.HouseNumber, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <label for="Password">Hasło</label>
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <label for="ConfirmPassword">Potwierdź hasło</label>
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-md-2 col-md-10">
+                <input type="submit" class="btn btn-outline-dark" value="Zarejestruj" />
+            </div>
+        </div>
+    }
+</main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

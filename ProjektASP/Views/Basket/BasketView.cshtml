@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProjektASP.Models.Product>
+@{
+    ViewBag.Title = "BasketView";
+}
+
+<h2>Koszyk</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Nazwa
+        </th>
+        <th>
+            Cena [zł]
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+        </tr>
+    }
+</table>
+
+@using (Html.BeginForm("Order", "Basket", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-4">
+            <!-- Wybór metody płatności -->
+            <label for="Payment1">Wybierz metodę płatności:</label>
+            <select name="Payment1" id="Payment1">
+                <option value="creditCard">Karta kredytowa</option>
+                <option value="paypal">PayPal</option>
+                <option value="bankTransfer">Przelew bankowy</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <!-- Wybór sposobu dostawy -->
+            <label for="Shipping1">Wybierz sposób dostawy:</label>
+            <select name="Shipping1" id="Shipping1">
+                <option value="standard">Standardowa dostawa</option>
+                <option value="express">Dostawa ekspresowa</option>
+                <option value="pickup">Odbiór osobisty</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <input type="submit" value="Zamów" class="btn btn-light" />
+        </div>
+    </div>
+}
+
+@Html.ActionLink("Wyczyść koszyk", "ClearCart", "Basket", new { }, new { @class = "btn btn-light" })

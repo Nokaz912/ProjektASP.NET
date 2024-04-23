@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Admin Panel";
+}
+
+<h2>Admin Panel</h2>
+
+<div>
+    <p>
+        @Html.ActionLink("Zarządzaj Produktami", "Index", "Products", null, new { @class = "btn btn-default" })
+    </p>
+    <p>
+        @Html.ActionLink("Zarządzaj Kategoriami", "Index", "Categories", null, new { @class = "btn btn-default" })
+    </p>
+    <p>
+        @Html.ActionLink("Zarządzaj Zamówieniami", "Index", "Orders", null, new { @class = "btn btn-default" })
+    </p>
+    <p>
+        @Html.ActionLink("Zarządzaj Użytkownikami", "GetAllUsers", "Account", null, new { @class = "btn btn-default" })
+    </p>
+    <!-- Dodaj inne przyciski według potrzeb -->
+</div>

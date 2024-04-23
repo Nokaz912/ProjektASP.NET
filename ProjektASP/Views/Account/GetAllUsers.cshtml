@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProjektASP.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "UserList";
+}
+
+<h2>Lista kont</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Nickname</th>
+            <th>Ulica</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.Surrname</td>
+                <td>@user.UserName</td>
+                <td>@user.Address.Address</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = user.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = user.Id })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
